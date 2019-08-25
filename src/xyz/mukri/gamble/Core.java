@@ -8,13 +8,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import xyz.mukri.gamble.listeners.ClickSign;
+import xyz.mukri.gamble.timers.GameTimer;
 
 public class Core extends JavaPlugin {
 	
+	public GameTimer gameTimer;
+	
 	public Location loc1;
 	public Location loc2;
+	public Location blockLoc;
 	
 	public HashMap<Player, Integer> players = new HashMap<Player, Integer>();
+	public HashMap<Player, String> playersColor = new HashMap<Player, String>();
 	
 	public Boolean start = false;
 	public Boolean counting = false;
@@ -26,6 +31,10 @@ public class Core extends JavaPlugin {
 		
 		loc1 = new Location(Bukkit.getWorld("2035_smp"), -146, 73, 146);
 		loc2 = new Location(Bukkit.getWorld("2035_smp"), -185, 61, 107);
+		blockLoc = new Location(Bukkit.getWorld("2035_smp"), -167, 67, 127);
+		
+		gameTimer = new GameTimer();
+		gameTimer.start();
 		
 		registerListeners();
 		
