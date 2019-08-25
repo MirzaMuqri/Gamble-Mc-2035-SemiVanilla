@@ -42,7 +42,6 @@ public class ClickSign implements Listener {
 							if (plugin.gameTimer.getState() == State.INGAME) {
 								p.sendMessage("You miss the bet! Try again next round.");
 							} else {
-								p.sendMessage("You bet " + bet + " on color " + color);
 								Core.getInstance().blockLoc.getWorld().playSound(Core.getInstance().blockLoc,
 										Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
 

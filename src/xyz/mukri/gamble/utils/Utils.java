@@ -53,6 +53,22 @@ public class Utils {
 			if (p.getInventory().getItemInMainHand().getType() != Material.DIAMOND) {
 				p.sendMessage("You don't have any diamonds in your hand! MISKIN, GO GET ONE!");
 			} else {
+				if (color.equalsIgnoreCase("red")) {
+					p.sendMessage(" ");
+					p.sendMessage("§7You bet §a§l" + diamonds + " §7on color §c§l" + color);
+					p.sendMessage(" ");
+				}
+				else if (color.equalsIgnoreCase("black")) {
+					p.sendMessage(" ");
+					p.sendMessage("§7You bet §a§l" + diamonds + " §7on color §8§l" + color);
+					p.sendMessage(" ");
+				}
+				else if (color.equalsIgnoreCase("green")) {
+					p.sendMessage(" ");
+					p.sendMessage("§7You bet §a§l" + diamonds + " §7on color §a§l" + color);
+					p.sendMessage(" ");
+				}
+
 				ItemStack item = p.getInventory().getItemInMainHand();
 
 				if (item.getAmount() >= diamonds) {
@@ -67,7 +83,7 @@ public class Utils {
 				}
 			}
 		} else {
-			p.sendMessage("Abiskita sudah menaruh bet biskita, tunggu next round baru dapat kita membet lagi.");
+			p.sendMessage("§7Abiskita sudah menaruh bet biskita, tunggu next round baru dapat kita membet lagi.");
 		}
 	}
 
@@ -80,7 +96,7 @@ public class Utils {
 
 						p.getInventory().addItem(new ItemStack(Material.DIAMOND, amt * 2));
 
-						p.sendMessage("You've won " + (amt * 2) + " diamonds!");
+						p.sendMessage("§7You've won §a§l" + (amt * 2) + " §7diamonds!");
 					}
 				}
 
@@ -90,7 +106,7 @@ public class Utils {
 
 						p.getInventory().addItem(new ItemStack(Material.DIAMOND, amt * 2));
 
-						p.sendMessage("You've won " + (amt * 2) + " diamonds!");
+						p.sendMessage("§7You've won §a§l" + (amt * 2) + " §7diamonds!");
 					}
 				}
 
@@ -100,10 +116,18 @@ public class Utils {
 
 						p.getInventory().addItem(new ItemStack(Material.DIAMOND, amt * 5));
 
-						p.sendMessage("You've won " + (amt * 5) + " diamonds!");
+						p.sendMessage("§7You've won §a§l" + (amt * 5) + " §7diamonds!");
 					}
 				} else {
-					p.sendMessage("Kalah! Winner color is: " + color);
+					if (color.equalsIgnoreCase("red")) {
+						p.sendMessage("§7Kalah! Winner color is: §c§l" + color);
+					}
+					else if (color.equalsIgnoreCase("black")) {
+						p.sendMessage("§7Kalah! Winner color is: §8§l" + color);
+					}
+					else if (color.equalsIgnoreCase("green")) {
+						p.sendMessage("§7Kalah! Winner color is: §a§l" + color);
+					}
 				}
 
 			}
@@ -112,8 +136,8 @@ public class Utils {
 
 	public static String getRandomColor() {
 		int r = new Random().nextInt(100 - 0 + 1) + 0;
-				
-		Bukkit.broadcastMessage(r + " number hashed");
+		
+		Utils.sendMessageInArea("§7Hashed Numbers: " + r);
 		
 		if (r < 50) {
 			return "Red";
