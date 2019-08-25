@@ -17,6 +17,7 @@ public class Core extends JavaPlugin {
 	public Location loc1;
 	public Location loc2;
 	public Location blockLoc;
+	public Location prevRoll;
 	
 	public HashMap<Player, Integer> players = new HashMap<Player, Integer>();
 	public HashMap<Player, String> playersColor = new HashMap<Player, String>();
@@ -32,6 +33,7 @@ public class Core extends JavaPlugin {
 		loc1 = new Location(Bukkit.getWorld("2035_smp"), -146, 73, 146);
 		loc2 = new Location(Bukkit.getWorld("2035_smp"), -185, 61, 107);
 		blockLoc = new Location(Bukkit.getWorld("2035_smp"), -167, 67, 127);
+		prevRoll = new Location(Bukkit.getWorld("2035_smp"), -160, 71, 129);
 		
 		gameTimer = new GameTimer();
 		gameTimer.start();

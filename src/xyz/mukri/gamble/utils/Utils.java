@@ -98,6 +98,9 @@ public class Utils {
 
 						p.sendMessage("§7You've won §a§l" + (amt * 2) + " §7diamonds!");
 					}
+					else {
+						sendLoseMsg(p, color);
+					}
 				}
 
 				else if (color.equals("Black")) {
@@ -107,6 +110,9 @@ public class Utils {
 						p.getInventory().addItem(new ItemStack(Material.DIAMOND, amt * 2));
 
 						p.sendMessage("§7You've won §a§l" + (amt * 2) + " §7diamonds!");
+					}
+					else {
+						sendLoseMsg(p, color);
 					}
 				}
 
@@ -118,19 +124,24 @@ public class Utils {
 
 						p.sendMessage("§7You've won §a§l" + (amt * 5) + " §7diamonds!");
 					}
-				} else {
-					if (color.equalsIgnoreCase("red")) {
-						p.sendMessage("§7Kalah! Winner color is: §c§l" + color);
-					}
-					else if (color.equalsIgnoreCase("black")) {
-						p.sendMessage("§7Kalah! Winner color is: §8§l" + color);
-					}
-					else if (color.equalsIgnoreCase("green")) {
-						p.sendMessage("§7Kalah! Winner color is: §a§l" + color);
+					else {
+						sendLoseMsg(p, color);
 					}
 				}
 
 			}
+		}
+	}
+	
+	public static void sendLoseMsg(Player p, String color) {
+		if (color.equalsIgnoreCase("Red")) {
+			p.sendMessage("§7Kalah! Winner color is: §c§l" + color);
+		}
+		else if (color.equalsIgnoreCase("Black")) {
+			p.sendMessage("§7Kalah! Winner color is: §8§l" + color);
+		}
+		else if (color.equalsIgnoreCase("Green")) {
+			p.sendMessage("§7Kalah! Winner color is: §a§l" + color);
 		}
 	}
 
@@ -174,6 +185,30 @@ public class Utils {
 		long time = Core.getInstance().blockLoc.getWorld().getTime();
 		
 		return time < 12300 || time > 23850;
+	}
+	
+	public static void updatePrevRoll(String color) {
+		Location oneRoll = new Location(Bukkit.getWorld("2035_smp"), -160, 71, 129);
+		Location twoRoll = new Location(Bukkit.getWorld("2035_smp"), -160, 71, 128);
+		Location threeRoll = new Location(Bukkit.getWorld("2035_smp"), -160, 71, 127);
+		Location fourRoll = new Location(Bukkit.getWorld("2035_smp"), -160, 71, 126);
+		Location fiveRoll = new Location(Bukkit.getWorld("2035_smp"), -160, 71, 125);
+		
+		fiveRoll.getBlock().setType(fourRoll.getBlock().getType());
+		fourRoll.getBlock().setType(threeRoll.getBlock().getType());
+		threeRoll.getBlock().setType(twoRoll.getBlock().getType());
+		twoRoll.getBlock().setType(oneRoll.getBlock().getType());
+		
+		if (color.equalsIgnoreCase("red")) {
+			oneRoll.getBlock().setType(Material.REDSTONE_BLOCK);
+		}
+		else if (color.equalsIgnoreCase("black")) {
+			oneRoll.getBlock().setType(Material.COAL_BLOCK);
+		}
+		else {
+			oneRoll.getBlock().setType(Material.EMERALD_BLOCK);
+		}
+
 	}
 
 }

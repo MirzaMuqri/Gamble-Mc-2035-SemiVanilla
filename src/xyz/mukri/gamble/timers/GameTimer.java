@@ -62,10 +62,8 @@ public class GameTimer extends BukkitRunnable {
 			start--;
 
 			if (start > 1) {
-				for (int i = 0; i < 3; i++) {
-					Core.getInstance().blockLoc.getWorld().playSound(Core.getInstance().blockLoc, Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
-					Core.getInstance().blockLoc.getBlock().setType(Utils.getRandomMaterial());
-				}
+				Core.getInstance().blockLoc.getWorld().playSound(Core.getInstance().blockLoc, Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
+				Core.getInstance().blockLoc.getBlock().setType(Utils.getRandomMaterial());
 			}
 
 			if (start == 1) {
@@ -82,11 +80,11 @@ public class GameTimer extends BukkitRunnable {
 					Utils.sendMessageInArea("§7Winning color: §a§l" + winning);
 				}
 				
-
 				Utils.givePrizes(winning);
+				Utils.updatePrevRoll(winning);
 			}
 
-			if (start == 0) {
+			if (start == -1) {
 				reset();
 			}
 		}

@@ -36,11 +36,11 @@ public class ClickSign implements Listener {
 					if (sign.getLine(0).equals("[Judi]")) {
 
 						if (Utils.isItDay()) {
-							p.sendMessage("Casino only opens at night time!");
+							p.sendMessage("§cCasino only opens at night time!");
 						} else {
 
 							if (plugin.gameTimer.getState() == State.INGAME) {
-								p.sendMessage("You miss the bet! Try again next round.");
+								p.sendMessage("§7You miss the bet! Try again next round.");
 							} else {
 								Core.getInstance().blockLoc.getWorld().playSound(Core.getInstance().blockLoc,
 										Sound.BLOCK_NOTE_BLOCK_PLING, 2.0f, 2.0f);
