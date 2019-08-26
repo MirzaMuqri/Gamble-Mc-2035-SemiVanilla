@@ -7,10 +7,14 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import xyz.mukri.gamble.files.TrackFile;
 import xyz.mukri.gamble.listeners.ClickSign;
+import xyz.mukri.gamble.listeners.OnQuitEvent;
 import xyz.mukri.gamble.timers.GameTimer;
 
 public class Core extends JavaPlugin {
+	
+	public TrackFile trackFile;
 	
 	public GameTimer gameTimer;
 	
@@ -29,6 +33,12 @@ public class Core extends JavaPlugin {
 	
 	public void onEnable() {
 		instance = this;
+		
+		trackFile = new TrackFile();
+		
+		if (!trackFile.isFileExists()) {
+			trackFile.createNewFile();
+		}
 		
 		loc1 = new Location(Bukkit.getWorld("2035_smp"), -146, 73, 146);
 		loc2 = new Location(Bukkit.getWorld("2035_smp"), -185, 61, 107);
@@ -49,6 +59,7 @@ public class Core extends JavaPlugin {
 	
 	public void registerListeners() {
 		getServer().getPluginManager().registerEvents(new ClickSign(this), this);
+		getServer().getPluginManager().registerEvents(new OnQuitEvent(this), this);
 	}
 	
 	public static Core getInstance() {

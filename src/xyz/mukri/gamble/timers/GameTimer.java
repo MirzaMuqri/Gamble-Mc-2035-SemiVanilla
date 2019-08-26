@@ -82,6 +82,9 @@ public class GameTimer extends BukkitRunnable {
 				
 				Utils.givePrizes(winning);
 				Utils.updatePrevRoll(winning);
+				
+				Core.getInstance().trackFile.addColor(winning.toLowerCase());
+				Core.getInstance().trackFile.save();
 			}
 
 			if (start == -1) {

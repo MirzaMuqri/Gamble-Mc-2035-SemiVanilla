@@ -47,11 +47,22 @@ public class Utils {
 			}
 		}
 	}
+	
+	public static boolean isPlayerInArena(Player p) {
+		Location loc1 = Core.getInstance().loc1;
+		Location loc2 = Core.getInstance().loc2;
+		
+		if (isPlayerInArea(p, loc1, loc2)) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	public static void addBet(Player p, int diamonds, String color) {
 		if (!Core.getInstance().players.containsKey(p)) {
 			if (p.getInventory().getItemInMainHand().getType() != Material.DIAMOND) {
-				p.sendMessage("You don't have any diamonds in your hand! MISKIN, GO GET ONE!");
+				p.sendMessage("§7You don't have any diamonds in your hand! MISKIN, GO GET ONE!");
 			} else {
 				if (color.equalsIgnoreCase("red")) {
 					p.sendMessage(" ");
@@ -97,6 +108,8 @@ public class Utils {
 						p.getInventory().addItem(new ItemStack(Material.DIAMOND, amt * 2));
 
 						p.sendMessage("§7You've won §a§l" + (amt * 2) + " §7diamonds!");
+						Core.getInstance().trackFile.addWinning();
+						Core.getInstance().trackFile.save();
 					}
 					else {
 						sendLoseMsg(p, color);
@@ -110,6 +123,8 @@ public class Utils {
 						p.getInventory().addItem(new ItemStack(Material.DIAMOND, amt * 2));
 
 						p.sendMessage("§7You've won §a§l" + (amt * 2) + " §7diamonds!");
+						Core.getInstance().trackFile.addWinning();
+						Core.getInstance().trackFile.save();
 					}
 					else {
 						sendLoseMsg(p, color);
@@ -123,6 +138,8 @@ public class Utils {
 						p.getInventory().addItem(new ItemStack(Material.DIAMOND, amt * 5));
 
 						p.sendMessage("§7You've won §a§l" + (amt * 5) + " §7diamonds!");
+						Core.getInstance().trackFile.addWinning();
+						Core.getInstance().trackFile.save();
 					}
 					else {
 						sendLoseMsg(p, color);
@@ -134,6 +151,9 @@ public class Utils {
 	}
 	
 	public static void sendLoseMsg(Player p, String color) {
+		Core.getInstance().trackFile.addLosing();
+		Core.getInstance().trackFile.save();
+		
 		if (color.equalsIgnoreCase("Red")) {
 			p.sendMessage("§7Kalah! Winner color is: §c§l" + color);
 		}
