@@ -30,12 +30,12 @@ public class ClickSign implements Listener {
 				if (e.getClickedBlock().getType() == Material.OAK_SIGN
 						|| e.getClickedBlock().getType() == Material.OAK_WALL_SIGN) {
 					Sign sign = (Sign) e.getClickedBlock().getState();
-					int bet = Integer.parseInt(sign.getLine(1));
-					String color = sign.getLine(3);
 
 					if (Utils.isPlayerInArena(p)) {
 						if (sign.getLine(0).equals("[Judi]")) {
-
+							int bet = Integer.parseInt(sign.getLine(1));
+							String color = sign.getLine(3);
+							
 							if (Utils.isItDay()) {
 								p.sendMessage("§cCasino only opens at night time!");
 							} else {

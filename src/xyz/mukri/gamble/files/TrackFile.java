@@ -73,7 +73,7 @@ public class TrackFile {
 	}
 	
 	public void addColor(String color) {
-		config.set("color." + color, getColor(color));
+		config.set("color." + color, getColor(color) + 1);
 	}
 
 }
