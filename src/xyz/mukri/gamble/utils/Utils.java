@@ -68,16 +68,19 @@ public class Utils {
 					p.sendMessage(" ");
 					p.sendMessage("§7You bet §a§l" + diamonds + " §7on color §c§l" + color);
 					p.sendMessage(" ");
+					sendMessageInArea("§a" + p.getName() + " §7bet §a§l" + diamonds + "§7 Diamonds on color §c§l" + color);
 				}
 				else if (color.equalsIgnoreCase("black")) {
 					p.sendMessage(" ");
 					p.sendMessage("§7You bet §a§l" + diamonds + " §7on color §8§l" + color);
 					p.sendMessage(" ");
+					sendMessageInArea("§a" + p.getName() + " §7bet §a§l" + diamonds + "§7 Diamonds on color §8§l" + color);
 				}
 				else if (color.equalsIgnoreCase("green")) {
 					p.sendMessage(" ");
 					p.sendMessage("§7You bet §a§l" + diamonds + " §7on color §a§l" + color);
 					p.sendMessage(" ");
+					sendMessageInArea("§a" + p.getName() + " §7bet §a§l" + diamonds + "§7 Diamonds on color §a§l" + color);
 				}
 
 				ItemStack item = p.getInventory().getItemInMainHand();
